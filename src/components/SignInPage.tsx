@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Eye, EyeOff, BookOpen, Star, Trophy, Target } from 'lucide-react';
 
 interface SignInPageProps {
-  onSignIn: () => void;
+  onSignIn: (name: string) => void;
 }
 
 const SignInPage = ({ onSignIn }: SignInPageProps) => {
@@ -30,8 +30,9 @@ const SignInPage = ({ onSignIn }: SignInPageProps) => {
     // Handle sign in/up logic here
     console.log('Form submitted:', formData);
     
-    // For now, automatically sign the user in after form submission
-    onSignIn();
+    // Pass the user's name when signing in
+    const displayName = isSignUp ? formData.name : formData.email.split('@')[0];
+    onSignIn(displayName);
   };
 
   return (

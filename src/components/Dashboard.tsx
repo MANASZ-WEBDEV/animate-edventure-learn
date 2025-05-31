@@ -1,13 +1,16 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Target, Star, BookOpen, Clock, Award } from 'lucide-react';
 
-const Dashboard = () => {
+interface DashboardProps {
+  userName: string;
+}
+
+const Dashboard = ({ userName }: DashboardProps) => {
   const userStats = {
-    name: "Alex Thompson",
+    name: userName || "Student",
     level: 12,
     xp: 2350,
     xpToNext: 3000,

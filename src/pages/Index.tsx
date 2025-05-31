@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Dashboard from '@/components/Dashboard';
@@ -10,16 +11,20 @@ import SignInPage from '@/components/SignInPage';
 const Index = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [userData, setUserData] = useState({ name: '' });
 
   // If not signed in, show the sign-in page
   if (!isSignedIn) {
-    return <SignInPage onSignIn={() => setIsSignedIn(true)} />;
+    return <SignInPage onSignIn={(name: string) => {
+      setIsSignedIn(true);
+      setUserData({ name });
+    }} />;
   }
 
   const renderCurrentPage = () => {
     switch (currentPage) {
       case 'dashboard':
-        return <Dashboard />;
+        return <Dashboard userName={userData.name} />;
       case 'lecture':
         return <LectureScreen />;
       case 'quiz':
@@ -29,7 +34,7 @@ const Index = () => {
       case 'map':
         return <ChapterMap />;
       default:
-        return <Dashboard />;
+        return <Dashboard userName={userData.name} />;
     }
   };
 
