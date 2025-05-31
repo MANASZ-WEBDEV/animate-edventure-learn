@@ -1,11 +1,14 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Eye, EyeOff, BookOpen, Star, Trophy, Target } from 'lucide-react';
 
-const SignInPage = () => {
+interface SignInPageProps {
+  onSignIn: () => void;
+}
+
+const SignInPage = ({ onSignIn }: SignInPageProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
@@ -26,6 +29,9 @@ const SignInPage = () => {
     e.preventDefault();
     // Handle sign in/up logic here
     console.log('Form submitted:', formData);
+    
+    // For now, automatically sign the user in after form submission
+    onSignIn();
   };
 
   return (

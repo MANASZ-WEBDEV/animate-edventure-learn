@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Dashboard from '@/components/Dashboard';
@@ -14,7 +13,7 @@ const Index = () => {
 
   // If not signed in, show the sign-in page
   if (!isSignedIn) {
-    return <SignInPage />;
+    return <SignInPage onSignIn={() => setIsSignedIn(true)} />;
   }
 
   const renderCurrentPage = () => {
