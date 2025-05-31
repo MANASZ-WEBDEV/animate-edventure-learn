@@ -6,9 +6,16 @@ import LectureScreen from '@/components/LectureScreen';
 import QuizScreen from '@/components/QuizScreen';
 import StudyPlanGenerator from '@/components/StudyPlanGenerator';
 import ChapterMap from '@/components/ChapterMap';
+import SignInPage from '@/components/SignInPage';
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState('dashboard');
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  // If not signed in, show the sign-in page
+  if (!isSignedIn) {
+    return <SignInPage />;
+  }
 
   const renderCurrentPage = () => {
     switch (currentPage) {
